@@ -14,14 +14,17 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.conf.urls.static import static
 from django.urls import path
 from main import views
+from DiscreteCalc import settings
 
 urlpatterns = [
     path('', views.index, name='main'),
     path('admin/', admin.site.urls),
     path('encode/', views.encode, name='encode'),
-    path('huffman/', views.huffman, name='huffman'),
+    path('huffman/', views.HuffmanView.as_view(), name='huffman'),
     path('hamming/', views.hamming, name='hamming'),
 
 ]
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_URL)
