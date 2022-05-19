@@ -1,10 +1,11 @@
 <!doctype html>
 <html lang="en">
+{% load static %}
 <head>
     <title>Discrete Calc - Encode</title>
 
 
-    <link href="../static/style/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{% static 'style/css/bootstrap.min.css' %}" rel="stylesheet">
 
     <style>
 
@@ -125,10 +126,13 @@
 {#                    </button>#}
 {#                </div>#}
                 <div class="row">
-                    {{ form }}
                     <input class="form-control col-12" type="text" placeholder="Результат будет выведен в этом поле"
                            aria-label="readonly input example"
                            readonly>
+                    {% if plus_context %}
+                        {{ plus_context.result }}
+                    {% endif %}
+
                 </div>
 {#            </div>#}
 
